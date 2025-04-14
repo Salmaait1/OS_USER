@@ -7,6 +7,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <arpa/inet.h>
+#include <time.h>
 
 struct _client
 {
@@ -226,7 +227,7 @@ int main(int argc, char *argv[])
         error("ERROR on binding");
     listen(sockfd, 5);
     clilen = sizeof(cli_addr);
-
+    srand(time(NULL));
     printDeck();
     melangerDeck();
     createTable();
