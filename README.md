@@ -59,13 +59,54 @@ Pour l'utiliser :
 
 # À propos du jeu
 
-Le serveur distribue 3 cartes à chaque joueur.
+Chaque joueur reçoit 3 cartes (parmi 13).
 
-Une 13e carte est le coupable.
+Une carte est le coupable à deviner.
 
-À son tour, un joueur peut interroger ou accuser via l'interface.
+À son tour, un joueur peut :
 
-Une accusation correcte fait gagner la partie.
+    interroger un autre joueur
+
+    interroger sur un objet
+
+    faire une accusation
+
+Une accusation correcte fait gagner, sinon le joueur est éliminé.
+
+# Problèmes courants
+- SDL.h introuvable ?
+
+            fatal error: SDL.h: No such file or directory
+            
+ - Solution :
+
+             sudo apt install libsdl2-dev
+
+- SDL_image.h ou SDL_ttf.h introuvable ?
+
+          sudo apt install libsdl2-image-dev libsdl2-ttf-dev
+
+- ERROR on binding: Address already in use
+  Cela signifie que le port 12345 est déjà utilisé par un autre processus (probablement une ancienne instance du serveur non arrêtée).
+  - Solution :
+ 
+  Trouver l’ID du serveur toujours actif :
+
+                    ps aux | grep server
+Exemple de sortie :
+
+                    salma   12345  0.0  ... ./server 12345
+
+Tuer le processus :
+
+                    kill -9 12345
+Relancer le projet :
+
+                  ./cmd.sh
+
+
+
+ 
 
 
 
