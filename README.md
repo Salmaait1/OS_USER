@@ -15,3 +15,9 @@ Il utilise SDL2 pour l’affichage graphique, et des sockets TCP pour la communi
 -  SH13_*.png	: Images des cartes et objets (utilisées dans l’interface)
 
 -  Compte Rendu
+
+  # Installation des dépendances (obligatoire)
+  Avant de compiler, il faut installer les bibliothèques SDL2 suivantes :
+  - sudo apt update
+  - sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
+
