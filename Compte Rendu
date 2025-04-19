@@ -1,0 +1,15 @@
+#  Rapport du Projet SH13 – Module Systèmes d’exploitation
+# Réalisé par : AITSALAH SALMA
+# Année universitaire : 2024–2025
+# Objectif du projet
+Ce projet avait pour but de compléter et de faire fonctionner un jeu de cartes multijoueur basé sur SH13 (Sherlock 13).
+L'objectif pédagogique était d'utiliser les notions vues dans le module de systèmes d’exploitation, telles que :
+
+          les sockets TCP pour la communication réseau
+      
+          les processus et threads pour le parallélisme
+      
+          les mutex pour la synchronisation
+      
+          la gestion d’événements avec SDL2
+
