@@ -89,8 +89,8 @@ Une accusation correcte fait gagner, sinon le joueur est éliminé.
 - ERROR on binding: Address already in use
   Cela signifie que le port 12345 est déjà utilisé par un autre processus (probablement une ancienne instance du serveur non arrêtée).
   - Solution :
- 
-  Trouver l’ID du serveur toujours actif :
+
+Trouver l’ID du serveur toujours actif :
 
                     ps aux | grep server
 Exemple de sortie :
