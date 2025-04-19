@@ -48,13 +48,13 @@ Pour l'utiliser :
 
 # À propos du jeu
 
-  Le serveur distribue 3 cartes à chaque joueur.
-  
-  Une 13e carte est le coupable.
-  
-  À son tour, un joueur peut interroger ou accuser via l'interface.
-  
-  Une accusation correcte fait gagner la partie.
+      Le serveur distribue 3 cartes à chaque joueur.
+      
+      Une 13e carte est le coupable.
+      
+      À son tour, un joueur peut interroger ou accuser via l'interface.
+      
+      Une accusation correcte fait gagner la partie.
 
 
 
