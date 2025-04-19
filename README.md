@@ -29,11 +29,11 @@ Nettoyer la compilation :
 # Méthode 2 – Avec le script cmd.sh (tout en un):
 Le script cmd.sh :
 
-    Compile le serveur et le client
+- Compile le serveur et le client
 
-    Lance le serveur (./server 12345)
+- Lance le serveur (./server 12345)
 
-    Lance automatiquement 4 clients (Alice, Bob, Carol, Dave)
+- Lance automatiquement 4 clients (Alice, Bob, Carol, Dave)
 Pour l'utiliser :
 - chmod +x cmd.sh   # (à faire une seule fois)
 - ./cmd.sh
@@ -48,13 +48,13 @@ Pour l'utiliser :
 
 # À propos du jeu
 
-Le serveur distribue 3 cartes à chaque joueur.
-
-Une 13e carte est le coupable.
-
-À son tour, un joueur peut interroger ou accuser via l'interface.
-
-Une accusation correcte fait gagner la partie.
+  Le serveur distribue 3 cartes à chaque joueur.
+  
+  Une 13e carte est le coupable.
+  
+  À son tour, un joueur peut interroger ou accuser via l'interface.
+  
+  Une accusation correcte fait gagner la partie.
 
 
 
