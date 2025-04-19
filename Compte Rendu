@@ -1,15 +1,99 @@
 #  Rapport du Projet SH13 – Module Systèmes d’exploitation
 # Réalisé par : AITSALAH SALMA
 # Année universitaire : 2024–2025
-# Objectif du projet
-Ce projet avait pour but de compléter et de faire fonctionner un jeu de cartes multijoueur basé sur SH13 (Sherlock 13).
-L'objectif pédagogique était d'utiliser les notions vues dans le module de systèmes d’exploitation, telles que :
+# Rapport de projet SH13 - Systèmes d'exploitation
 
-          les sockets TCP pour la communication réseau
-      
-          les processus et threads pour le parallélisme
-      
-          les mutex pour la synchronisation
-      
-          la gestion d’événements avec SDL2
+## Objectif du projet
 
+Ce projet consistait à réaliser un jeu de cartes multijoueur inspiré du jeu Sherlock 13 (SH13). 
+Il a été développé en langage C avec une interface graphique SDL2, et repose sur une architecture client/serveur utilisant les sockets TCP pour la communication. 
+L'objectif principal était d'appliquer concrètement les concepts abordés en cours de Systèmes d'exploitation : sockets, processus, threads...
+
+--
+
+##  Construction du programme
+
+### Structure globale
+
+- `server.c` : gère la logique du jeu, la distribution des cartes et les communications avec les clients.
+- `sh13.c` : code client SDL, permet d'interagir avec le joueur et de recevoir/envoyer des messages au serveur.
+- `cmd.sh` : script Bash pour compiler et lancer automatiquement serveur et clients.
+- `Makefile` : fichier de compilation alternatif à `cmd.sh`.
+
+### Modifications et complétions
+
+#### Serveur
+
+- Lecture et traitement des messages 'C' (connexion), 'G' (accusation), 'O' et 'S' (interrogations).
+- Broadcast des informations 'L', 'D', 'M', 'V', 'WIN', 'LOSS' selon les actions.
+- Distribution aléatoire des cartes avec melangerDeck()' et affectation des symboles avec 'createTable()'.
+- Synchronisation du début de partie une fois les 4 joueurs connectés.
+
+#### Client
+
+- Traitement SDL des clics souris selon les zones (objets, joueurs, cartes...)
+- Communication avec le serveur via `sendMessageToServer()`
+- Création d'un thread TCP pour recevoir les messages sans bloquer l'interface.
+- Décodage et affichage des messages : 'I', 'L', 'D', 'M', 'V'.
+
+---
+
+## Fonctionnement du programme
+
+1. Lancement du serveur : './server 12345'
+2. Connexion de 4 clients, chacun avec un port propre.
+3. Le serveur assigne 3 cartes par joueur + la carte du coupable (la 13ème).
+4. Tour par tour, chaque joueur peut :
+   - Interroger un autre joueur (`S`)
+   - Interroger un objet (`O`)
+   - Faire une accusation (`G`)
+5. Si l'accusation est correcte, le joueur gagne. Sinon il est éliminé.
+6. Les informations sont transmises à tous via des messages texte.
+
+---
+
+##  Concepts systèmes appliqués
+
+###  Sockets TCP
+
+Utilisées pour les connexions entre serveur principal et les clients, mais aussi entre clients et leur propre serveur TCP interne. Fonctions utilisées : 
+-  socket()
+- bind()
+- listen()
+- accept()
+- connect()
+- write()
+- read()
+
+### Threads
+
+Chaque client crée un thread pour écouter les messages du serveur en arrière-plan. Cela évite le blocage de la boucle SDL.
+
+### Mutex
+
+Synchronisation d'accès à 'gbuffer' via 'pthread_mutex_t'. 
+
+### Processus
+
+Chaque client est lancé comme processus séparé via le script 'cmd.sh', ce qui simule des connexions réelles.
+
+---
+
+## Problèmes rencontrés et solutions
+
+- **Erreur de port déjà utilisé** : le port 12345 était parfois bloqué. Solution : tuer l'ancien serveur avec 'kill -9'.
+- **SDL.h manquant** : installation nécessaire des paquets :
+
+
+                      sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
+
+  
+- **Cartes toujours dans le même ordre** : oubli de 'srand(time(NULL))' pour mélanger.
+
+---
+
+## Conclusion
+
+Ce projet a été une expérience enrichissante et très concrète pour mettre en pratique les notions vues en TP. 
+Au début, j’ai trouvé le projet un peu compliqué car je ne connaissais pas le jeu Sherlock 13 et je ne comprenais pas comment il se jouait. 
+Mais après avoir testé et observé plusieurs parties, tout est devenu plus clair.
