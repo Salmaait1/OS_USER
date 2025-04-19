@@ -23,7 +23,9 @@ Il utilise SDL2 pour l’affichage graphique, et des sockets TCP pour la communi
 
 # Compilation du projet
 Méthode 1 – Avec make:
-          make
+
+                make
+          
 Nettoyer la compilation :
       make clean
 # Méthode 2 – Avec le script cmd.sh (tout en un):
