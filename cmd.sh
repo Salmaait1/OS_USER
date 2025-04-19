@@ -17,7 +17,6 @@ echo "Serveur lancé (PID $server_pid)"
 sleep 1  
 
 echo "Lancement des clients..."
-# Chaque client doit disposer d'un port client différent.
 ./sh13 localhost 12345 localhost 5000 Alice &
 ./sh13 localhost 12345 localhost 5001 Bob &
 ./sh13 localhost 12345 localhost 5002 Carol &
