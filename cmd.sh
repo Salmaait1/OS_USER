@@ -14,7 +14,7 @@ echo "Lancement du serveur sur le port 12345..."
 ./server 12345 &
 server_pid=$!
 echo "Serveur lancé (PID $server_pid)"
-sleep 1  # Délai pour permettre au serveur de démarrer
+sleep 1  
 
 echo "Lancement des clients..."
 # Chaque client doit disposer d'un port client différent.
