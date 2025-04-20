@@ -325,7 +325,7 @@ int main(int argc, char *argv[])
                     {
                         sprintf(reply, "WIN %s", tcpClients[pid].name);
                         broadcastMessage(reply);
-                        // Fin de partie, on peut éventuellement stopper le serveur
+                        // Fin de partie
                     }
                     else
                     {
@@ -342,11 +342,11 @@ int main(int argc, char *argv[])
                 {
                     int pid, objet;
                     sscanf(buffer, "O %d %d", &pid, &objet);
-                    // Pour simplifier, si le joueur possède au moins une occurrence, décrémenter de 1.
+                    // Pour simplifier, si le joueur possède au moins une occurrence, on décrémente de 1.
                     if (tableCartes[pid][objet] > 0)
                         tableCartes[pid][objet]--;
                     sprintf(reply, "V %d %d", objet, tableCartes[pid][objet]);
-                    // Envoyer uniquement au joueur concerné
+                    // Envoyer  au joueur concerné
                     sendMessageToClient(tcpClients[pid].ipAddress, tcpClients[pid].port, reply);
                 }
                 break;
